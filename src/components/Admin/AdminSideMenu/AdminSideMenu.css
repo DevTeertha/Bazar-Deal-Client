@@ -1,0 +1,28 @@
+.admin-side-menu{
+    width: 100%;
+}
+.admin-side-menu ul{
+    text-align: left;
+    padding: 0;
+    margin: 3.5em 0;
+}
+.admin-side-menu ul li{
+    margin: 1em 0;
+    font-size: 1.5em;
+    list-style: none;
+    cursor: pointer;
+}
+.admin-link{
+    padding: 0.5em 0;
+    padding-left: 3em;
+    display: block;
+    color: white;
+}
+.admin-link:hover{
+    color: white;
+    text-decoration: none;
+    background-color: #57a0b6;
+}
+.bazar-logo-admin:hover{
+    text-decoration: none;
+}

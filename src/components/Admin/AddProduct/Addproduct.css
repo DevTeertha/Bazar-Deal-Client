@@ -1,0 +1,16 @@
+.form-container{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #5bc0de;
+    height: 100vh;
+}
+.form{
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+}
