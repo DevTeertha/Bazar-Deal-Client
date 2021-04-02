@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import { MyContext } from '../../App';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { signOut } from '../Firebase/FirebaseAuth';
 
 const Header = () => {
     const { userState } = useContext(MyContext);
@@ -11,14 +12,18 @@ const Header = () => {
     const { isLoggedIn, name, img } = user;
 
     const signOutHandler = () => {
-        const signOutUser = {
-            isLoggedIn: false,
-            name: "",
-            email: "",
-            img: ""
-        }
-        setUser(signOutUser);
-        localStorage.clear();
+        signOut()
+            .then(res => {
+                const signOutUser = {
+                    isLoggedIn: false,
+                    name: "",
+                    email: "",
+                    img: ""
+                }
+                setUser(signOutUser);
+                localStorage.clear();
+            })
+            .catch(err => console.log(err))
     }
 
     return (

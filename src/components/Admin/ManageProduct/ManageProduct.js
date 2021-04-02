@@ -5,9 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 import { MyContext } from '../../../App';
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
 const ManageProduct = () => {
     const { productState } = useContext(MyContext);
     const [products, setProducts] = productState;
+
+    const [open, setOpen] = React.useState(false);
+    const Alert = (props) => {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+    }
 
     const productDeleteHandler = (id) => {
         fetch(`https://warm-sea-45342.herokuapp.com/delete/${id}`, {
@@ -15,11 +23,21 @@ const ManageProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                const afterDelete = products.filter(pd=>pd._id!==id);
+                const afterDelete = products.filter(pd => pd._id !== id);
                 setProducts(afterDelete);
+                setOpen(true);
+
             })
             .catch(err => console.log(err))
     }
+
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
 
     return (
         <div>
@@ -46,7 +64,7 @@ const ManageProduct = () => {
                                         <td> ${price} </td>
                                         <td>
                                             <button className="btn btn-success mx-1 my-2"> <FontAwesomeIcon icon={faPen} /> </button>
-                                            <button onClick={()=>productDeleteHandler(_id)} className="btn btn-danger mx-1 my-2"><FontAwesomeIcon icon={faTrashAlt} /></button>
+                                            <button onClick={() => productDeleteHandler(_id)} className="btn btn-danger mx-1 my-2"><FontAwesomeIcon icon={faTrashAlt} /></button>
                                         </td>
                                     </tr>
                                 )
@@ -54,6 +72,11 @@ const ManageProduct = () => {
                         }
                     </tbody>
                 </Table>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success">
+                        Successfully Deleted
+                        </Alert>
+                </Snackbar>
             </div>
         </div>
     );

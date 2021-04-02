@@ -62,7 +62,6 @@ const Checkout = () => {
             },
         },
     }));
-
     const classes = useStyles();
 
 

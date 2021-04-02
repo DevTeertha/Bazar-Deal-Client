@@ -15,3 +15,11 @@ export const signInWithGoogle = () => {
             return errorMessage;
         });
 }
+
+export const signOut = () =>{
+    return firebase.auth().signOut().then((res) => {
+        return res;
+      }).catch((error) => {
+        return error;
+      });
+}

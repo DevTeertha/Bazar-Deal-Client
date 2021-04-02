@@ -6,6 +6,10 @@ import axios from 'axios';
 import { css } from '@emotion/react';
 import { PulseLoader } from "react-spinners";
 import { MyContext } from '../../../App';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
 const override = css`
   display: inline-block;
   margin: 0 auto;
@@ -13,7 +17,7 @@ const override = css`
 `;
 
 const AddProduct = () => {
-    const { productState , loadState } = useContext(MyContext);
+    const { productState, loadState } = useContext(MyContext);
     const [products, setProducts] = productState;
     const [loading, setLoading] = loadState;
     const [imgLoad, setImgLoad] = useState(false);
@@ -21,6 +25,15 @@ const AddProduct = () => {
     const [img, setImg] = useState("No Photo");
     const [imgURL, setImgURL] = useState(null);
     const { register, handleSubmit } = useForm();
+
+
+    // Metarial UI SNACKBAR MESSAGE START
+    const [open, setOpen] = React.useState(false);
+    const Alert = (props) => {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+    }
+
+    // Metarial UI SNACKBAR MESSAGE END
 
     const onSubmit = (data, e) => {
         if (img === ' ') {
@@ -34,7 +47,7 @@ const AddProduct = () => {
                 price: price,
                 imgURL: imgURL
             }
-            const afterAddProduct = [...products , uploadProduct];
+            const afterAddProduct = [...products, uploadProduct];
             setProducts(afterAddProduct);
 
             setLoading(true);
@@ -47,11 +60,18 @@ const AddProduct = () => {
                     setImgURL('');
                     setImg('');
                     setLoading(false);
-                    alert('Product Uploaded Successfully');
+                    setOpen(true);
                     e.target.reset();
                 })
                 .catch(err => console.log(err))
         }
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
     };
 
     const handleImageUpload = (e) => {
@@ -96,7 +116,7 @@ const AddProduct = () => {
                         {
                             imgLoad ?
                                 <Form.Label className="px-3">
-                                    Please Wait <PulseLoader color={color} css={override} size={10}/>
+                                    Please Wait <PulseLoader color={color} css={override} size={10} />
                                 </Form.Label>
                                 :
                                 <Form.Label className="px-3 text-info font-weight-bold">{img}</Form.Label>
@@ -121,6 +141,11 @@ const AddProduct = () => {
                         }
                     </Form.Group>
                 </Form>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success">
+                        Product Uploaded Successfully
+                        </Alert>
+                </Snackbar>
             </div>
         </div>
     );
