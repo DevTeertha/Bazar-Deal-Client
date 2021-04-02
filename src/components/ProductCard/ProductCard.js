@@ -7,8 +7,8 @@ const ProductCard = (props) => {
     const buyNowHandler = props.buyNowHandler;
 
     return (
-        <div className="col-4 p-3">
-            <Card style={{ height: '33em' }}>
+        <div className="col-lg-4 col-sm-12 col-md-6 p-3">
+            <Card>
                 <Card.Img variant="top" src={imgURL} />
                 <Card.Body>
                     <Card.Title className="font-weight-bold" style={{ fontSize: '1.8em', textAlign: 'center' }}> {productName} </Card.Title>

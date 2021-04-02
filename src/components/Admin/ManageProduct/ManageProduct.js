@@ -45,8 +45,8 @@ const ManageProduct = () => {
                                         <td> {weight}g </td>
                                         <td> ${price} </td>
                                         <td>
-                                            <button className="btn btn-success mx-1"> <FontAwesomeIcon icon={faPen} /> </button>
-                                            <button onClick={()=>productDeleteHandler(_id)} className="btn btn-danger mx-1"><FontAwesomeIcon icon={faTrashAlt} /></button>
+                                            <button className="btn btn-success mx-1 my-2"> <FontAwesomeIcon icon={faPen} /> </button>
+                                            <button onClick={()=>productDeleteHandler(_id)} className="btn btn-danger mx-1 my-2"><FontAwesomeIcon icon={faTrashAlt} /></button>
                                         </td>
                                     </tr>
                                 )

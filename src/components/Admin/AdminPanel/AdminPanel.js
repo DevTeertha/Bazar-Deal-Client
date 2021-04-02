@@ -12,12 +12,11 @@ import EditProduct from '../EditProduct/EditProduct';
 const AdminPanel = () => {
     return (
         <div className="row admin-container">
-            <div className="side-menu-container col-3 text-center p-4">
+            <div className="side-menu-container col-xl-3 col-sm-2 text-center p-4">
                 <AdminSideMenu></AdminSideMenu>
             </div>
-            <div className="admin-home-container col">
+            <div className="admin-home-container col-xl-9 col-sm-10">
                 <Switch>
-
                     <Route exact path="/admin">
                         <ManageProduct></ManageProduct>
                     </Route>

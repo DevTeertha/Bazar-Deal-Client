@@ -5,6 +5,10 @@ import Header from '../Header/Header';
 import { MyContext } from '../../App';
 import { getDatabaseCart } from '../../databaseManager';
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
 const Checkout = () => {
     const { cartState, productState, orderState } = useContext(MyContext);
     const [cart, setCart] = cartState;
@@ -15,7 +19,7 @@ const Checkout = () => {
         const dateObject = new Date();
         const currentDate = dateObject.toLocaleDateString();
         const currentTime = dateObject.toLocaleTimeString();
-        const currentDateAndTime = currentDate +"\t"+ currentTime;
+        const currentDateAndTime = currentDate + "\t" + currentTime;
         return currentDateAndTime;
     }
 
@@ -45,6 +49,23 @@ const Checkout = () => {
 
     }, [])
 
+    const [open, setOpen] = React.useState(false);
+    const Alert = (props) => {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+    }
+
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            width: '100%',
+            '& > * + *': {
+                marginTop: theme.spacing(2),
+            },
+        },
+    }));
+
+    const classes = useStyles();
+
+
     const placeOrderHandler = () => {
         const email = localStorage.getItem('email');
         const newOrder = { ...order };
@@ -56,24 +77,32 @@ const Checkout = () => {
         newOrder.date = getDateAndTime();
         setOrder(newOrder);
 
-        fetch('http://localhost:5000/placeOrder',{
+        fetch('http://localhost:5000/placeOrder', {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newOrder)
         })
-        .then(res=>{
-            setOrder({
-                email: "",
-                productList: [],
-                totalPrice: 0,
-                date: ""
-              });
-            setCart([]);
-            sessionStorage.clear();
-            alert("Your Order Has Been Successfully Placed!");
-        })
-        .catch(err=>console.log(err))
+            .then(res => {
+                setOrder({
+                    email: "",
+                    productList: [],
+                    totalPrice: 0,
+                    date: ""
+                });
+                setCart([]);
+                sessionStorage.clear();
+                setOpen(true);
+            })
+            .catch(err => console.log(err))
     }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+
 
     return (
         <div className="container">
@@ -81,6 +110,7 @@ const Checkout = () => {
                 <Header></Header>
             </div>
             <div className="deals-container">
+
                 <h1 className="my-5 font-weight-bold">Checkout</h1>
                 <div className="table-container p-4 bg-white border form mt-5">
                     <Table striped bordered hover>
@@ -119,6 +149,11 @@ const Checkout = () => {
                             </tr>
                         </tfoot>
                     </Table>
+                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity="success">
+                            Your Order Has Been Successfully Placed
+                        </Alert>
+                    </Snackbar>
                     <div className="place-button text-right">
                         <button onClick={placeOrderHandler} className='btn btn-info'>Place Order</button>
                     </div>

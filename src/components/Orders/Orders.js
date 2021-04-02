@@ -15,7 +15,8 @@ const Orders = () => {
             .then(res => res.json())
             .then(data => setOrderHistory(data))
             .catch(err => console.log(err))
-    }, [])
+    }, []);
+
     return (
         <div className="container">
             <div className="header-container">
@@ -29,7 +30,7 @@ const Orders = () => {
                             <tr>
                                 <th>Your Orders</th>
                                 <th>Total Price</th>
-                                <th>Date <span style={{color: 'gray',fontWeight: '100'}}> (dd/mm/yyy)</span></th>
+                                <th>Date <span style={{ color: 'gray', fontWeight: '100' }}> (dd/mm/yyy)</span></th>
                             </tr>
                         </thead>
                         {
@@ -57,5 +58,4 @@ const Orders = () => {
         </div>
     );
 };
-
 export default Orders;

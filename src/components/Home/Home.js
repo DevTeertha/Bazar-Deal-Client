@@ -29,7 +29,7 @@ const Home = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container-lg container-sm container-md">
             <div className="header-container">
                 <Header></Header>
             </div>

@@ -1,21 +1,7 @@
-.admin-side-menu{
-    width: 100%;
-}
-.admin-side-menu ul{
-    text-align: left;
-    padding: 0;
-    margin: 3.5em 0;
-}
-.admin-side-menu ul li{
-    margin: 1em 0;
-    font-size: 1.5em;
-    list-style: none;
-    cursor: pointer;
-}
 .admin-link{
+    margin: 1em 0;
     padding: 0.5em 0;
-    padding-left: 3em;
-    display: block;
+    font-size: 1.3em;
     color: white;
 }
 .admin-link:hover{
