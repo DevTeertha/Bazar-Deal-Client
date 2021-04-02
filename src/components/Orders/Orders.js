@@ -29,7 +29,7 @@ const Orders = () => {
                             <tr>
                                 <th>Your Orders</th>
                                 <th>Total Price</th>
-                                <th>Date</th>
+                                <th>Date <span style={{color: 'gray',fontWeight: '100'}}> (dd/mm/yyy)</span></th>
                             </tr>
                         </thead>
                         {
