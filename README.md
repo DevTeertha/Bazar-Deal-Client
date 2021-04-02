@@ -1,10 +1,11 @@
-# Live Link Client Site 
+# Live Link Client Site https://bazar-deal.web.app/
 
 # Bazar Deal - Makes Your Own Deal
 
 # Features
 1. Login Authentication With Google
 2. Profile Pop Up Menu
+
 ![alt text](https://i.ibb.co/f4Xs5rV/Capture.png)
 
 3. Private Route
@@ -15,4 +16,5 @@
 8. Data Load From Database
 9. Session Storage (For Order Data) And Local Storage (For Profile data) Used
 10. Image Upload and store in database# full-stack-client-DevTeertha
+11. Responsive Mobile & Desktop Version
 # full-stack-client-DevTeertha
