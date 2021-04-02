@@ -10,7 +10,7 @@ const ManageProduct = () => {
     const [products, setProducts] = productState;
 
     const productDeleteHandler = (id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://warm-sea-45342.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

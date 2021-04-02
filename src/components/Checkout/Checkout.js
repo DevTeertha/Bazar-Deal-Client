@@ -77,7 +77,7 @@ const Checkout = () => {
         newOrder.date = getDateAndTime();
         setOrder(newOrder);
 
-        fetch('http://localhost:5000/placeOrder', {
+        fetch('https://warm-sea-45342.herokuapp.com/placeOrder', {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newOrder)

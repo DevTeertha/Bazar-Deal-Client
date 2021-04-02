@@ -11,7 +11,7 @@ const Orders = () => {
     const { _id } = cart;
     const email = localStorage.getItem('email');
     useEffect(() => {
-        fetch(`http://localhost:5000/order?email=${email}`)
+        fetch(`https://warm-sea-45342.herokuapp.com/order?email=${email}`)
             .then(res => res.json())
             .then(data => setOrderHistory(data))
             .catch(err => console.log(err))
