@@ -5,10 +5,8 @@ import Header from '../Header/Header';
 import { MyContext } from '../../App';
 
 const Orders = () => {
-    const { cartState, orderHistoryState } = useContext(MyContext);
+    const { orderHistoryState } = useContext(MyContext);
     const [orderHistory, setOrderHistory] = orderHistoryState;
-    const [cart] = cartState;
-    const { _id } = cart;
     const email = localStorage.getItem('email');
     useEffect(() => {
         fetch(`https://warm-sea-45342.herokuapp.com/order?email=${email}`)

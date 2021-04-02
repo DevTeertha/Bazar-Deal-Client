@@ -45,7 +45,7 @@ const Login = () => {
             <div className="header-container">
                 <Header></Header>
             </div>
-            <div className="login-container w-50 p-3 mt-5">
+            <div className="login-container p-3 mt-5">
                 <div className="login-frame border p-4">
                     <h2 style={{ fontWeight: '600' }} className="mb-4">Login</h2>
                     <form action="">

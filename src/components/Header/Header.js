@@ -3,7 +3,7 @@ import './Header.css'
 import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import { MyContext } from '../../App';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { signOut } from '../Firebase/FirebaseAuth';
 
 const Header = () => {
